@@ -1,0 +1,29 @@
+<body class="right">
+  <br>
+  <br>
+  <br>
+  <div *ngIf="members; else default">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Role</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let member of members; let i = index;">
+          <th scope="row">{{i+1}}</th>
+          <td>{{ member.name }}</td>
+          <td>{{ member.role }}</td>
+          <td><button type="button" class="btn btn-primary" data-toggle="modal" (click)="showModal(member)" data-target="#editModal">Edit</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <app-edit-member [member]="selectedMember"></app-edit-member>
+  <ng-template #default>
+    <h5 style="text-align:center;">Please select a Band from dropdown to view details</h5>
+  </ng-template>
+</body>
